@@ -1,0 +1,212 @@
+.student-form-container {
+    background-color: #faf9f9;
+
+    padding: 3rem 5rem;
+    position: relative;
+
+    .student-image-container {
+        position: absolute;
+        top: 9rem;
+        right: 6rem;
+        transform: translate(-4.5rem, -3rem);
+        height: 9rem;
+        width: 9rem;
+        text-align: center;
+        background-color: #f0eeee;
+        .student-image {
+            height: 9rem;
+            img {
+                height: 100%;
+            }
+        }
+    }
+
+    .post-selection {
+        text-align: center;
+
+        &-label {
+            font-size: 1.2rem;
+            font-weight: 400;
+        }
+        input {
+            margin: 0 0.5rem 0 1.5rem;
+        }
+    }
+
+    .cards {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        &-left {
+            width: 35%;
+        }
+        &-right {
+            width: 60%;
+            display: grid;
+            grid-template-rows: 1fr 1fr;
+            grid-template-columns: 1fr 1fr;
+        }
+        .card-group {
+            font-size: 1.2rem;
+            &-label {
+                font-size: inherit;
+                font-weight: 400 !important;
+            }
+            label {
+                font-weight: 300;
+            }
+        }
+    }
+
+    .form-group {
+        margin: 1.5rem 0;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        label {
+            width: 35%;
+        }
+        .form-group-input {
+            width: 60%;
+            input,
+            textarea,
+            select {
+                width: 100%;
+                padding: 0.5rem 1rem;
+                border: 1px solid #ccc;
+                font-family: sans-serif;
+                border-radius: 0.4rem;
+                &::placeholder {
+                    font-weight: 350;
+                    color: #999;
+                }
+                &:nth-child(2) {
+                    margin-top: 1.5rem;
+                }
+            }
+            textarea {
+                height: 9rem;
+            }
+            .textarea-footer {
+                font-size: 1rem;
+                text-align: right;
+            }
+        }
+    }
+
+    .form-text {
+        font-size: 1.2rem !important;
+    }
+}
+
+.list-container {
+    outline: 1px solid #f0eeee;
+    outline-offset: 1.4rem;
+    margin: 2rem 0;
+    border-radius: 0.5rem;
+    .list {
+        padding-left: 2rem;
+        margin: 1rem 0;
+        li {
+            font-size: 1.2rem;
+            font-weight: 550;
+            margin: 1rem 0;
+        }
+    }
+}
+
+.btn-container {
+    width: 100%;
+    text-align: right;
+
+    .btn {
+        width: 60%;
+        padding: 0.75rem 0;
+        border: 1px solid #f0eeee;
+        color: #f0eeee;
+        text-transform: uppercase;
+        border-radius: 0.5rem;
+        transition: all 0.3s ease-in-out;
+    }
+    .btn-enabled {
+        background: #3b6eb9;
+        &:hover {
+            background: #f0eeee;
+            color: #3b6eb9;
+            border-color: #3b6eb9;
+            cursor: pointer;
+        }
+    }
+    .btn-disabled {
+        background: linear-gradient(to right, rgba(#fff, 0.5), rgba(#fff, 0.5)),
+            crimson;
+    }
+}
+
+.error-text {
+    font-size: 1rem;
+    color: crimson;
+    padding-left: 1rem;
+}
+
+label {
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+.space-left {
+    padding-left: 1.5rem;
+}
+.required {
+    color: crimson;
+}
+
+@media (max-width: 720px) {
+    .student-form-container {
+        padding: 3rem;
+        margin-top: -1px;
+        .student-image-container {
+            top: 9rem;
+            right: 4rem;
+            height: 10rem;
+            width: 10rem;
+            transform: translate(-5rem, -2rem);
+            .student-image {
+                height: 10rem;
+            }
+        }
+
+        .form-group {
+            flex-flow: row wrap;
+            label {
+                width: 100%;
+            }
+            .form-group-input {
+                width: 95%;
+                padding-left: 5%;
+                margin-top: 1rem;
+            }
+            .text-label {
+                width: 15%;
+            }
+            .text-label + .form-group-input {
+                width: 50%;
+                margin: 0.5rem auto 0 0;
+            }
+        }
+
+        .cards {
+            margin-top: 2.5rem;
+            align-items: flex-start;
+        }
+
+        .btn-container {
+            text-align: center;
+            .btn {
+                width: 91%;
+            }
+        }
+    }
+    .list-container {
+        outline-offset: 1rem;
+    }
+}
