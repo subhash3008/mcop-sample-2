@@ -22,11 +22,18 @@ export const navigation: FuseNavigation[] = [
                 // }
             },
             {
-                id: 'abcd',
-                title: 'ABCD',
+                id: 'guidelines-faq',
+                title: 'Guidelines And FAQs',
                 type: 'item',
                 icon: 'email',
-                url: '/abcd'
+                url: '/guidelines-faq'
+            },
+            {
+                id: 'important-dates',
+                title: 'Important Dates',
+                type: 'item',
+                icon: 'calendar_today',
+                url: '/important-dates'
             }
         ]
     }

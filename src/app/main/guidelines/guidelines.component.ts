@@ -6,11 +6,11 @@ import { locale as english } from './i18n/en';
 import { locale as turkish } from './i18n/tr';
 
 @Component({
-    selector   : 'sample',
-    templateUrl: './sample.component.html',
-    styleUrls  : ['./sample.component.scss']
+    selector   : 'guidelines',
+    templateUrl: './guidelines.component.html',
+    styleUrls  : ['./guidelines.component.scss']
 })
-export class SampleComponent
+export class GuidelinesComponent
 {
     /**
      * Constructor

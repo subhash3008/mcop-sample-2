@@ -16,16 +16,22 @@ import { fuseConfig } from 'app/fuse-config';
 
 import { AppComponent } from 'app/app.component';
 import { LayoutModule } from 'app/layout/layout.module';
-import { SampleModule } from 'app/main/sample/sample.module';
 import { NominationFormModule } from './main/nomination-form/nomination-form.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SampleComponent } from './main/sample/sample.component';
+import { GuidelinesComponent } from './main/guidelines/guidelines.component';
+import { ImportantDatesComponent } from './main/important-dates/important-dates.component';
 
 const appRoutes: Routes = [
-    // {
-    //     path: 'abcd',
-    //     component: SampleComponent
-    // },
+    {
+        path: 'important-dates',
+        pathMatch: "full",
+        component: ImportantDatesComponent
+    },
+    {
+        path: 'guidelines-faq',
+        pathMatch: "full",
+        component: GuidelinesComponent
+    },
     {
         path      : '**',
         redirectTo: 'nomination-form'
@@ -34,7 +40,9 @@ const appRoutes: Routes = [
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        GuidelinesComponent,
+        ImportantDatesComponent
     ],
     imports     : [
         BrowserModule,
@@ -62,7 +70,6 @@ const appRoutes: Routes = [
 
         // App modules
         LayoutModule,
-        SampleModule,
         NominationFormModule,
 
     ],
