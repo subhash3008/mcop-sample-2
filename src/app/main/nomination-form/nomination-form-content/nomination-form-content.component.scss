@@ -1,5 +1,6 @@
 .student-form-container {
     background-color: #fff;
+    font-family: 'Muli, Helvetica Neue, Arial, sans-serif';
 
     padding: 3rem 5rem;
     position: relative;
@@ -74,7 +75,7 @@
                 width: 100%;
                 padding: 0.5rem 1rem;
                 border: 1px solid #ccc;
-                font-family: sans-serif;
+                font-family: 'Muli, Helvetica Neue, Arial, sans-serif';
                 border-radius: 0.4rem;
                 &::placeholder {
                     font-weight: 350;
