@@ -1,4 +1,238 @@
 <div class="student-form-container">
+  <div style="width: 0; height: 0;" #scrollTop></div>
+  <mat-vertical-stepper class="mat-elevation-z4" [linear]="true" #formStepper>
+    <mat-step [stepControl]="basicDetailsForm">
+      <form fxLayout="column" [formGroup]="basicDetailsForm">
+        <ng-template matStepLabel >Basic Details</ng-template>
+        <div fxFlex="1 0 auto" fxLayout="column">
+          <div class="mat-radio-container">
+            <mat-radio-group aria-label="Select an option" formControlName="positionApplied">
+              <mat-radio-button value="school">School Prefect</mat-radio-button>
+              <mat-radio-button value="house">House Prefect</mat-radio-button>
+            </mat-radio-group>
+            <mat-error *ngIf="basicDetailsForm.get('positionApplied').hasError('required') && (showBasicDetailsError || basicDetailsForm.get('positionApplied').touched)">
+              Position to apply must be selected!
+            </mat-error>
+          </div>
+          <mat-form-field appearance="outline" fxFlex="100">
+            <mat-label>Name</mat-label>
+            <input matInput disabled [value]="basicDetailsForm.get('studentName').value">
+          </mat-form-field>
+          <mat-form-field appearance="outline" fxFlex="100">
+            <mat-label>Class</mat-label>
+            <input matInput disabled [value]="basicDetailsForm.get('class').value">
+          </mat-form-field>
+          <mat-form-field appearance="outline" fxFlex="100">
+            <mat-label>House</mat-label>
+            <input matInput disabled [value]="basicDetailsForm.get('house').value">
+          </mat-form-field>
+            <div formGroupName="cards" fxFlex="100" fxLayout="row" fxLayoutAlign="space-between center" class="cards">
+              <mat-form-field appearance="outline" fxFlex="24">
+                <mat-label>Worthy</mat-label>
+                <input matInput disabled [value]="basicDetailsForm.get('cards.worthy').value">
+              </mat-form-field>
+              <mat-form-field appearance="outline" fxFlex="24">
+                <mat-label>Intellect</mat-label>
+                <input matInput disabled [value]="basicDetailsForm.get('cards.intellect').value">
+              </mat-form-field>
+              <mat-form-field appearance="outline" fxFlex="24">
+                <mat-label>Stature</mat-label>
+                <input matInput disabled [value]="basicDetailsForm.get('cards.stature').value">
+              </mat-form-field>
+              <mat-form-field appearance="outline" fxFlex="24">
+                <mat-label>Emotion</mat-label>
+                <input matInput disabled [value]="basicDetailsForm.get('cards.emotion').value">
+              </mat-form-field>
+            </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="center center">
+          <button mat-raised-button matStepperNext type="button" color="accent" (click)="onBasicDetailsFormNext(); onFormChange()">
+            Next
+          </button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="abilitiesForm">
+      <form fxLayout="column" [formGroup]="abilitiesForm">
+        <ng-template matStepLabel>Abilities And Achievements</ng-template>
+        <div fxFlex="1 0 auto" fxLayout="column">
+          <mat-form-field appearance="outline" fxFlex="100">
+            <mat-label>Record of responsibilities held so far</mat-label>
+            <input matInput formControlName="resposibilitiesHeld" required>
+          </mat-form-field>
+          <div formGroupName="academicPerformance" class="group-container" fxFlex="100" fxLayout="column">
+            <div class="label-container">
+              <mat-label>Academic Performance</mat-label>
+            </div>
+            <mat-form-field appearance="outline" fxFlex="100">
+              <mat-label>Total (%) - 5 Subjects</mat-label>
+              <input matInput formControlName="total" required type="number">
+            </mat-form-field>
+            <mat-form-field appearance="outline" fxFlex="100">
+              <mat-label>11th Midterm (%) (if not applicable fill NA)</mat-label>
+              <input matInput formControlName="eleventhMidTermPerc" required>
+            </mat-form-field>
+            <mat-form-field appearance="outline" fxFlex="100">
+              <mat-label>Attendence (%)</mat-label>
+              <input matInput formControlName="attendancePerc" required type="number">
+            </mat-form-field>
+          </div>
+          <mat-form-field appearance="outline" fxFlex="100">
+            <mat-label>Have you failed in any subject in Midterm</mat-label>
+            <input matInput formControlName="failedMidtermOrNot" required>
+          </mat-form-field>
+          <mat-form-field appearance="outline" fxFlex="100">
+            <mat-label>Co-Scholastic Achievements</mat-label>
+            <input matInput formControlName="scholasticAchievement" required>
+          </mat-form-field>
+          <mat-form-field appearance="outline" fxFlex="100">
+            <mat-label>Sports Achievements</mat-label>
+            <input matInput formControlName="sportsAchievement" required>
+          </mat-form-field>
+          <mat-form-field appearance="outline" fxFlex="100">
+            <mat-label>Other Achievements</mat-label>
+            <input matInput formControlName="otherAchievement" required>
+          </mat-form-field>
+          <mat-form-field appearance="outline" fxFlex="100">
+            <mat-label>Any case of indiscipline that you have been invoved in</mat-label>
+            <input matInput formControlName="indisciplineActions" required>
+          </mat-form-field>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="center center">
+          <button class="mr-8" mat-raised-button matStepperPrevious type="button" color="accent" (click)="onFormChange()">
+            Previous
+          </button>
+          <button mat-raised-button matStepperNext type="button" color="accent" (click)="onFormChange()">
+            Next
+          </button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="visionForm">
+      <form fxLayout="column" [formGroup]="visionForm">
+        <ng-template matStepLabel>Vision For School</ng-template>
+        <div fxFlex="1 0 auto" fxLayout="column" class="group-container">
+          <div class="label-container">
+            <mat-label>
+              <p>Choose THREE School related 'issues' and describe them in 250 words. The purpose is to make you recognize "what is an issue / problem." We want your honest opinion and the school would address issues that you as prospective leaders are grappling with. Categorise your report into four parts.</p>
+              <ul>
+                <li>What I see (truth/factual part)</li>
+                <li>What I hear (might not be true but it is going around, might include hearsay).</li>
+                <li>What I perceive(your understanding of the issue)</li>
+                <li>What I suggest/solutions.</li>
+              </ul>
+            </mat-label>
+          </div>
+          <div formGroupName="issue1" class="group-container" fxFlex="100" fxLayout="column">
+            <div class="label-container">
+              <mat-label>Topic 1</mat-label>
+            </div>
+            <mat-form-field appearance="outline" fxFlex="100">
+              <mat-label>Write/Paste Title Here</mat-label>
+              <input matInput formControlName="title" required>
+            </mat-form-field>
+            <mat-form-field appearance="outline" fxFlex="100">
+              <mat-label>Write/Paste Content Here</mat-label>
+              <textarea matInput formControlName="content" required></textarea>
+              <mat-hint align="end">( Maximum 250 words )</mat-hint>
+              <mat-error *ngIf="visionForm.get('issue1.content').hasError('maxWords') && visionForm.get('issue1.content').touched">
+                Content has a maximum length of 250 words.
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div formGroupName="issue2" class="group-container" fxFlex="100" fxLayout="column">
+            <div class="label-container">
+              <mat-label>Topic 2</mat-label>
+            </div>
+            <mat-form-field appearance="outline" fxFlex="100">
+              <mat-label>Write/Paste Title Here</mat-label>
+              <input matInput formControlName="title" required>
+            </mat-form-field>
+            <mat-form-field appearance="outline" fxFlex="100">
+              <mat-label>Write/Paste Content Here</mat-label>
+              <textarea matInput formControlName="content" required></textarea>
+              <mat-hint align="end">( Maximum 250 words )</mat-hint>
+              <mat-error *ngIf="visionForm.get('issue2.content').hasError('maxWords') && visionForm.get('issue2.content').touched">
+                Content has a maximum length of 250 words.
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div formGroupName="issue3" class="group-container" fxFlex="100" fxLayout="column">
+            <div class="label-container">
+              <mat-label>Topic 3</mat-label>
+            </div>
+            <mat-form-field appearance="outline" fxFlex="100">
+              <mat-label>Write/Paste Title Here</mat-label>
+              <input matInput formControlName="title" required>
+            </mat-form-field>
+            <mat-form-field appearance="outline" fxFlex="100">
+              <mat-label>Write/Paste Content Here</mat-label>
+              <textarea matInput formControlName="content" required></textarea>
+              <mat-hint align="end">( Maximum 250 words )</mat-hint>
+              <mat-error *ngIf="visionForm.get('issue3.content').hasError('maxWords') && visionForm.get('issue3.content').touched">
+                Content has a maximum length of 250 words.
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="center center">
+            <button class="mr-8" mat-raised-button matStepperPrevious type="button" color="accent" (click)="onFormChange()">
+              Previous
+            </button>
+            <button mat-raised-button matStepperNext type="button" color="accent" (click)="onFormChange()">
+              Next
+            </button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="finalForm">
+      <form fxLayout="column" [formGroup]="finalForm">
+        <ng-template matStepLabel>References</ng-template>
+        <div fxFlex="1 0 auto" fxLayout="column">
+          <mat-form-field appearance="outline" fxFlex="100">
+            <mat-label>House Incharge</mat-label>
+            <input matInput disabled [value]="finalForm.get('houseIncharge').value">
+          </mat-form-field>
+          <mat-form-field appearance="outline" fxFlex="100">
+            <mat-label>Class Teacher</mat-label>
+            <input matInput disabled [value]="finalForm.get('classTeacher').value">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Any Other Teacher</mat-label>
+            <mat-select formControlName="otherReferee">
+              <mat-option *ngFor="let teacher of teacherList" [value]="teacher">
+                {{ teacher }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="center center">
+          <button class="mr-8" mat-raised-button matStepperPrevious type="button" color="accent" (click)="onFormChange()">
+            Previous
+          </button>
+          <button mat-raised-button matStepperNext type="button" color="accent" (click)="onFormChange()">
+            Next
+          </button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Apply</ng-template>
+      <div class="h2 m-16" fxLayout="row" fxLayoutAlign="center center">
+        Thank your for filling out the nomination form.
+      </div>
+      <div fxLayout="row" fxLayoutAlign="center center">
+        <button class="mr-8" mat-raised-button matStepperPrevious type="button" color="accent" (click)="onFormChange()">
+            Previous
+        </button>
+        <button mat-raised-button type="button" color="accent" (click)="onSubmit()">
+            Finish
+        </button>
+      </div>
+    </mat-step>
+  </mat-vertical-stepper>
+</div>
+<!-- <div class="student-form-container">
   <form [formGroup]="studentForm" (ngSubmit)="onSubmit()" *ngIf="studentForm">
     <div class="student-image-container">
       <div class="student-image">
@@ -132,11 +366,6 @@
     <div class="form-group">
       <label>3. Have you failed in any subject in Midterm: <span class="required">*</span></label>
       <div class="form-group-input">
-        <!-- <input
-          type="text"
-          class="form-control"
-          formControlName="failedMidtermOrNot"
-        /> -->
         <select name="failedMidtermOrNot" formControlName="failedMidtermOrNot" *ngIf="!formSubmitted">
           <option [value]="null" readonly>Please Select</option>
           <option value="yes">YES</option>
@@ -367,4 +596,4 @@
       </button>
     </div>
   </form>
-</div>
+</div> -->
